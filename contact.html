@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact & Payment</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e3f2fd, #ffffff);
+      padding: 30px;
+      color: #333;
+    }
+
+    .card {
+      background-color: #ffffff;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 25px 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h2 {
+      color: #1976d2;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    img {
+      width: 200px;
+      margin-bottom: 20px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #1976d2;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #135ca8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Pay for <span id="courseName">Course</span></h2>
+    <p>Scan the QR below and pay using UPI, then share your details.</p>
+
+    <img src="qr.png" alt="QR Code" />
+
+    <form onsubmit="submitForm(event)">
+      <input type="text" placeholder="Your Name" required><br>
+      <input type="email" placeholder="Your Email" required><br>
+      <input type="text" placeholder="Transaction ID / Screenshot link" required><br>
+      <textarea placeholder="Any message..." rows="3"></textarea><br>
+      <button type="submit">Submit Details</button>
+    </form>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const course = urlParams.get('course');
+  
+    if (course) {
+      document.getElementById("courseName").textContent = course;
+    }
+  
+    function submitForm(e) {
+      e.preventDefault();
+      
+      const email = document.querySelector('input[type="email"]').value;
+  
+      // Store course and email for login match
+      if (course && email) {
+        localStorage.setItem("purchasedCourse", "batch" + course); // e.g., batch9
+        localStorage.setItem("purchasedEmail", email);
+      }
+  
+      alert("Thanks! We'll verify your payment and get back to you.");
+      window.location.href = "dashboard.html";
+    }
+  </script>
+  
+
+  </script>
+
+</body>
+</html>

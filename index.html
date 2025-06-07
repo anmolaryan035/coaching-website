@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Portal - Coaching Center</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="form-wrapper">
+    <h1>Welcome to Coaching Center</h1>
+
+    <!-- Login Form -->
+    <div class="form-container" id="login-form">
+      <h2>Login</h2>
+      <input type="email" placeholder="Email" id="login-email" required />
+      <input type="password" placeholder="Password" id="login-password" required />
+      <button onclick="login()">Login</button>
+      <p>Don’t have an account? <a href="#" onclick="showSignup()">Sign Up</a></p>
+
+    </div>
+
+    <!-- Sign Up Form -->
+    <div class="form-container hidden" id="signup-form">
+      <h2>Sign Up</h2>
+      <input type="text" placeholder="full name" id="signup-name" required/>
+      <input type="email" placeholder="Email" id="signup-email" required />
+      <input type="password" placeholder="Password" id="signup-password" required />
+      <button onclick="signup()">Sign Up</button>
+      <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
